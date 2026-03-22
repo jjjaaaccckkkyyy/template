@@ -1,0 +1,181 @@
+@import "tailwindcss";
+@import "@fontsource/space-mono/400.css";
+@import "@fontsource/space-mono/700.css";
+
+@import "./styles/layout.css";
+@import "./styles/auth.css";
+@import "./styles/dashboard.css";
+
+:root {
+  --background: 0 0% 4%;
+  --foreground: 0 0% 88%;
+  --card: 0 0% 5%;
+  --card-foreground: 0 0% 88%;
+  --popover: 0 0% 6%;
+  --popover-foreground: 0 0% 88%;
+  --primary: 77 100% 55%;
+  --primary-foreground: 0 0% 4%;
+  --secondary: 0 0% 8%;
+  --secondary-foreground: 0 0% 65%;
+  --muted: 0 0% 8%;
+  --muted-foreground: 0 0% 45%;
+  --accent: 77 100% 55%;
+  --accent-foreground: 0 0% 4%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 88%;
+  --border: 0 0% 9%;
+  --input: 0 0% 9%;
+  --ring: 77 100% 55%;
+  --radius: 0.125rem;
+}
+
+* { border-color: rgba(255,255,255,0.07); }
+
+body {
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-family: 'Space Mono', monospace;
+  min-height: 100vh;
+}
+
+.font-display {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.font-mono { font-family: 'Space Mono', monospace; }
+
+/* Tabular numbers for stats and code */
+.tabular-nums { font-variant-numeric: tabular-nums; }
+
+.label-xs {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+.card-cyber {
+  background: #0e0e0e;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.card-cyber:hover { border-color: rgba(255,255,255,0.12); }
+.card-cyber::before { display: none; }
+
+/* input-cyber used in form pages */
+.input-cyber {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 2px;
+  padding: 0.5rem 0.75rem;
+  color: #e0e0e0;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.input-cyber::placeholder { color: rgba(255,255,255,0.2); }
+.input-cyber:focus { border-color: rgba(255,255,255,0.16); }
+
+/* btn-cyber / btn-cyber-outline used in form pages */
+.btn-cyber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  border: 1px solid rgba(181,255,24,0.3);
+  background: rgba(181,255,24,0.06);
+  color: #b5ff18;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.btn-cyber:hover:not(:disabled) {
+  border-color: rgba(181,255,24,0.5);
+  background: rgba(181,255,24,0.12);
+}
+.btn-cyber:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-cyber-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: transparent;
+  color: rgba(255,255,255,0.55);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  text-decoration: none;
+}
+.btn-cyber-outline:hover:not(:disabled) {
+  border-color: rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.04);
+  color: #e0e0e0;
+}
+
+.glow-neon {}
+.text-glow {}
+.grain-overlay { display: none; }
+
+.text-gradient-cyber { color: #b5ff18; }
+.text-cyber { color: #b5ff18; }
+.text-cyber-muted { color: rgba(181,255,24,0.6); }
+
+.text-success { color: rgb(74,222,128); }
+.text-warning { color: rgb(251,191,36); }
+.text-danger  { color: rgb(239,68,68); }
+
+.status-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+.status-dot.running { background: #b5ff18; animation: statusPulse 2s infinite; }
+.status-dot.idle    { background: rgba(255,255,255,0.2); }
+.status-dot.error   { background: rgb(239,68,68); }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.3s ease-out forwards; }
+.animate-pulse-glow { animation: statusPulse 2s ease-in-out infinite; }
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.07) 50%, rgba(255,255,255,0.04) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15); }
+
+::selection { background: rgba(181,255,24,0.2); color: #e0e0e0; }

@@ -1,0 +1,12 @@
+node_modules
+dist
+.DS_Store
+*.log
+.env
+.env.local
+**/screenshots/*.png
+cookies.txt
+**/coverage/*
+
+# Test coverage
+server/coverage/
