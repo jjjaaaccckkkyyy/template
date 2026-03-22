@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import { Outlet } from "react-router-dom";
 import { Menu } from "lucide-react";
 import { Sidebar } from "./Sidebar";
 import { Header } from "./Header";
 
 interface DashboardLayoutProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export function DashboardLayout({ children }: DashboardLayoutProps) {
@@ -101,7 +102,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         {!isMobile && <Header />}
 
         <main className="flex-1 p-4 md:p-6 lg:p-8 layout-main">
-          {children}
+          {children ?? <Outlet />}
         </main>
       </div>
     </div>
